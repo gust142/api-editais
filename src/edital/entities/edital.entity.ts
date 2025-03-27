@@ -6,4 +6,6 @@ export class Edital {
     ano: number;
     descricao: string;
     ong?: Ong;
+    aberto: boolean;
+    ongId: number;
 }
