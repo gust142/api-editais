@@ -1,0 +1,35 @@
+name: "Deploy para VPS"
+on:
+  push:
+    branches:
+      -main
+jobs:
+  build_deploy:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: "Baixar Código"
+        uses: actions/checkout@v4
+        
+      - name: "Copiar Arquivos Para VPS"
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          source: "."
+          target: "/home/api-editais"
+        
+      - name: "Build da Aplicação"
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd home/api-editais
+            pm2 stop 0
+            npm install
+            npm run build
+            pm2 start 0
+            
