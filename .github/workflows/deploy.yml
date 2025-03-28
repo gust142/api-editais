@@ -28,6 +28,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd /home/api-editais
+            export PATH=$PATH:/root/.nvm/versions/node/v22.14.0/bin/node
             pm2 stop 0
             npm install
             npm run build
