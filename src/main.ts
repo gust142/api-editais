@@ -14,11 +14,10 @@ async function bootstrap() {
     }),
   );
   app.enableCors({
-    origin: 'https://systemsgf.com.br',
+    origin: ['https://systemsgf.com.br', 'http://localhost:4200'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
-
   await app.listen(3000);
 }
 bootstrap();

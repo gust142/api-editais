@@ -14,10 +14,12 @@ import { EditalController } from './edital/edital.controller';
 import { EditalService } from './edital/edital.service';
 import { RecursoService } from './recurso/recurso.service';
 import { RecursoController } from './recurso/recurso.controller';
+import { LinkController } from './link/link.controller';
+import { LinkService } from './link/link.service';
 
 @Module({
   imports: [PrismaModule, UsuarioModule, AuthModule, OngModule, EditalModule],
-  controllers: [AppController, OngController, EditalController, RecursoController],
+  controllers: [AppController, OngController, EditalController, RecursoController, LinkController],
   providers: [AppService,
     {
       provide: APP_GUARD,
@@ -26,6 +28,7 @@ import { RecursoController } from './recurso/recurso.controller';
     OngService,
     EditalService,
     RecursoService,
+    LinkService,
   ],
 })
 export class AppModule { }
