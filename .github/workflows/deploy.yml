@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd home/api-editais
+            cd /home/api-editais
             pm2 stop 0
             npm install
             npm run build
