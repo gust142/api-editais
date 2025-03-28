@@ -9,6 +9,6 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return "oi meu xuxu"
+    return "Teste de rota"
   }
 }
